@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  h1 {
+    color: #333;
+  }
+  p {
+    color: #666;
+  }
+  button {
+    background-color: #ffd700; /* Gold color */
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  button:hover {
+    background-color: #ffdb58; /* Lighter gold color */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Enter Your Birthday Details</h1>
+  <form id="birthdayForm">
+    <label for="name">Your Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+    <label for="birthdate">Your Birthdate:</label><br>
+    <input type="date" id="birthdate" name="birthdate" required><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="birthdayMessage" style="display: none;">
+    <h2>Happy Birthday!</h2>
+    <p id="birthdayPerson"></p>
+    <button id="playButton">Play Pitbull Song</button>
+    <audio id="pitbullAudio" src="URL_OF_YOUR_PITBULL_SONG" preload="auto"></audio>
+  </div>
+</div>
+
+<script>
+  // Get elements
+  const birthdayForm = document.getElementById('birthdayForm');
+  const birthdayMessage = document.getElementById('birthdayMessage');
+  const birthdayPerson = document.getElementById('birthdayPerson');
+  const playButton = document.getElementById('playButton');
+  const audio = document.getElementById('pitbullAudio');
+
+  // Add submit event listener to the form
+  birthdayForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    const name = document.getElementById('name').value;
+    birthdayPerson.textContent = `Happy Birthday, ${name}!`;
+    birthdayForm.style.display = 'none';
+    birthdayMessage.style.display = 'block';
+  });
+
+  // Add click event listener to the button
+  playButton.addEventListener('click', function() {
+    // If audio is playing, pause it; otherwise, play it
+    if (audio.paused) {
+      audio.play();
+      playButton.textContent = 'Pause Music';
+    } else {
+      audio.pause();
+      playButton.textContent = 'Play Pitbull Song';
+    }
+  });
+</script>
+
+</body>
+</html>
